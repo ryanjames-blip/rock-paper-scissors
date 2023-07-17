@@ -1,5 +1,22 @@
 //console.log('Hello, World!');
 
+let playerWins = 0;
+let computerWins = 0;
+
+while (true) {
+    
+    playerWins = 0;
+    computerWins = 0;
+
+    playGame();
+
+    let playAgain = prompt('Play Again? (type \'y\' or \'n\'');
+    if (playAgain == 'n') {
+        console.log('Thanks for playing!');
+        break;
+    }
+}
+
 // generate a random number 
 // use that number to assign either rock, paper, or scissors
 function getComputerChoice() {
@@ -16,6 +33,7 @@ function getComputerChoice() {
     }
 }
 
+//simulate one round of rock, paper, scissors
 function playRound(computerSelection, playerSelection) {
     //check for a tie first
     if (computerSelection === playerSelection) {
@@ -54,6 +72,7 @@ function playRound(computerSelection, playerSelection) {
     }
 }
 
+//simulate best of 5 match
 function playGame() {
     while (computerWins < 3 && playerWins < 3) {
         let computerSelection = getComputerChoice();
@@ -71,7 +90,5 @@ function playGame() {
     }
 }
 
-let playerWins = 0;
-let computerWins = 0;
 
-playGame();
+
