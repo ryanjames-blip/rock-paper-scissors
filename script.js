@@ -1,5 +1,4 @@
-//console.log('Hello, World!');
-
+//rock paper scissors logic below
 let playerWins = 0;
 let computerWins = 0;
 
@@ -89,6 +88,6 @@ function playGame() {
         console.log('You win!')
     }
 }
-
+// rock, paper, scissors logic above
 
 
