@@ -7,9 +7,9 @@ while (true) {
     playerWins = 0;
     computerWins = 0;
 
-    playGame();
+    //playGame();
 
-    let playAgain = prompt('Play Again? (type \'y\' or \'n\'');
+    //let playAgain = prompt('Play Again? (type \'y\' or \'n\'');
     if (playAgain == 'n') {
         console.log('Thanks for playing!');
         break;
