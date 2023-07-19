@@ -4,18 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <title>RPS</title>
 </head>
 <body>
     <div class="title">ROCK-PAPER-SCISSORS</div>
     <div class="container">
-        <div id="rock">Place rock image</div>
-        <div id="paper">Place paper image</div>
-        <div id="scissors">Place scissors image</div>
+        <div class="rock-container">
+            <button class="choice" id="rock">Place rock image</button>
+            <div id="rock-text">Rock</div>
+        </div>
+        <div class="paper-container">
+            <button class="choice" id="paper">Place paper image</button>
+            <div id="paper-text">Paper</div>
+        </div>
+        <div class="scissors-container">
+            <button class="choice" id="scissors">Place scissors image</button>
+            <div id="scissors-text">Scissors</div>
+        </div>
     </div>
     <div class="display"></div>
-    <div class="play"><button>Play</button></div>
+    <div class="play"><button id="play-button">Play</button></div>
     <div id="footer">&trade;ryanjames-blip</div>
 </body>
 </html>

@@ -6,7 +6,7 @@ html, body {
     background-color: black;
     color: #01cf01;
     height: 100%;
-    text-shadow: #016801 1px 1px;
+    /*text-shadow: #016801 1px 1px;*/
 }
 
 .title {
@@ -25,16 +25,37 @@ html, body {
     padding: 12px 0;
 }
 
+.rock-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    border: 2px solid #01cf01;
+}
+
 #rock {
+    cursor: pointer;
+}
+
+.paper-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border: 2px solid #01cf01;
 }
 
 #paper {
+    cursor: pointer;
+}
+
+.scissors-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border: 2px solid #01cf01;
 }
 
 #scissors {
-    border: 2px solid #01cf01;
+    cursor: pointer;
 }
 
 .play {
@@ -48,9 +69,10 @@ html, body {
     border: 2px solid #01cf01;
     margin: 24px;
     padding: 12px 0;
+    text-align: center;
 }
 
-button {
+#play-button {
     color: #01cf01;
     background-color: black;
     font-size: 16px;
