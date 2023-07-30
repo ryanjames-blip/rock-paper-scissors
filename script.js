@@ -1,6 +1,5 @@
 // initialize play button and add event listener
 // to start the game
-
 const playButton = document.querySelector('#play-button');
 playButton.addEventListener('click', playGame);
 
@@ -30,9 +29,12 @@ function getComputerChoice() {
     }
 }
 
-function getPlayerChoice(event) {
-    console.log(event.target.id);
-    return event.target.id;
+function getPlayerChoice() {
+    let choice;
+    choices.forEach(choice => choice.addEventListener('click', function(event) {
+        choice = event.target.id;
+    } )); 
+    return choice;
 }
 
 //simulate one round of rock, paper, scissors
@@ -79,37 +81,24 @@ function playGame() {
     display.textContent = 'OK...\nLet\'s Play...First to 5 wins';
       
     while (computerWins < 5 && playerWins < 5) {
+        display.textContent = 'Make your choice...';
         let computerSelection = getComputerChoice();
         let playerSelection;
-        choices.forEach(choice => choice.addEventListener('click', function(event) {
-            playerSelection = getPlayerChoice(event);
-        } )); 
+        while (playerSelection == undefined) {
+            playerSelection = getPlayerChoice();
+        }
         let result = playRound(computerSelection, playerSelection);
         display.textContent = result;
+        playerSelection = undefined;
     }
 
     if (computerWins == 5) {
         display.textContent = 'Computer Wins!';
     }
-    else {
+    else if (playerSelection == 5){
         display.textContent = 'You win!';
     }
+    console.log('playgame ended');
 }
 
-//GAME LOOP
-/*
-while (true) {
-    
-    playerWins = 0;
-    computerWins = 0;
 
-    //playGame();
-    
-    let playAgain;// = prompt('Play Again? (type \'y\' or \'n\'');
-    if (playAgain == 'n') {
-        console.log('Thanks for playing!');
-        break;
-    }
-    
-}
-*/
