@@ -7,37 +7,13 @@ playButton.addEventListener('click', playGame);
 const display = document.querySelector('.display');
 display.textContent = 'Want to play a game?\nClick play to start';
 
-// initialize rock, paper and scissors buttons
-/*
-const rock = document.querySelector('#rock');
-const paper = document.querySelector('#paper');
-const scissors = document.querySelector('#scissors');
-
-rock.addEventListener('click', )
-paper.addEventListener('click', )
-scissors.addEventListener('click', )
-*/
+//initialize rock, paper, and scissors buttons
 const choices = document.querySelectorAll('.choice');
 
 //rock paper scissors logic below
 let playerWins = 0;
 let computerWins = 0;
-/*
-while (true) {
-    
-    playerWins = 0;
-    computerWins = 0;
 
-    //playGame();
-    
-    let playAgain;// = prompt('Play Again? (type \'y\' or \'n\'');
-    if (playAgain == 'n') {
-        console.log('Thanks for playing!');
-        break;
-    }
-    
-}
-*/
 // generate a random number 
 // use that number to assign either rock, paper, or scissors
 function getComputerChoice() {
@@ -52,6 +28,11 @@ function getComputerChoice() {
     else {
         return 'scissors';
     }
+}
+
+function getPlayerChoice(event) {
+    console.log(event.target.id);
+    return event.target.id;
 }
 
 //simulate one round of rock, paper, scissors
@@ -96,11 +77,13 @@ function playRound(computerSelection, playerSelection) {
 //simulate best of 5 match
 function playGame() {
     display.textContent = 'OK...\nLet\'s Play...First to 5 wins';
-    choices.forEach(choice => choice.addEventListener('click', getPlayerChoice));
+      
     while (computerWins < 5 && playerWins < 5) {
         let computerSelection = getComputerChoice();
-        let playerSelection = console.log(choice);
-        //playerSelection = playerSelection.toLowerCase();
+        let playerSelection;
+        choices.forEach(choice => choice.addEventListener('click', function(event) {
+            playerSelection = getPlayerChoice(event);
+        } )); 
         let result = playRound(computerSelection, playerSelection);
         display.textContent = result;
     }
@@ -112,14 +95,21 @@ function playGame() {
         display.textContent = 'You win!';
     }
 }
-// rock, paper, scissors logic above
 
-// TODO: complete function
-function getPlayerChoice(e) {
+//GAME LOOP
+/*
+while (true) {
+    
+    playerWins = 0;
+    computerWins = 0;
+
+    //playGame();
+    
+    let playAgain;// = prompt('Play Again? (type \'y\' or \'n\'');
+    if (playAgain == 'n') {
+        console.log('Thanks for playing!');
+        break;
+    }
     
 }
-
-/*
-listen for a click on rock, paper, and scissors
-assign player choice based on which is clicked
 */

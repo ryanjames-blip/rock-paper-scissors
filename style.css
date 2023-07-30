@@ -24,15 +24,15 @@ button {
     margin: 24px 0 36px 0;
     padding: 12px 0;
 }
-#rock, #paper, #scissors {
+#rock-button, #paper-button, #scissors-button {
     cursor: pointer;
     height: 200px;
     width: 200px;
 }
-#paper {
+#paper-button {
     transform: scale(.75);
 }
-#scissors {
+#scissors-button {
     transform: scale(1.5);
 }
 .play {
