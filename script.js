@@ -5,9 +5,13 @@ playButton.addEventListener('click', playGame);
 
 const display = document.querySelector('.display');
 display.textContent = 'Want to play a game?\nClick play to start';
+const scoreDisplay = document.querySelector('.score-display');
 
 //initialize rock, paper, and scissors buttons
 const choices = document.querySelectorAll('.choice');
+choices.forEach(choice => choice.addEventListener('click', function(event) {
+    getPlayerChoice(event);
+} )); 
 
 //rock paper scissors logic below
 let playerWins = 0;
@@ -29,76 +33,66 @@ function getComputerChoice() {
     }
 }
 
-function getPlayerChoice() {
-    let choice;
-    choices.forEach(choice => choice.addEventListener('click', function(event) {
-        choice = event.target.id;
-    } )); 
-    return choice;
+function getPlayerChoice(event) {
+    let playerChoice = event.target.id;
+    let computerChoice = getComputerChoice();
+    playRound(computerChoice, playerChoice);
 }
 
 //simulate one round of rock, paper, scissors
 function playRound(computerSelection, playerSelection) {
     //check for a tie first
     if (computerSelection === playerSelection) {
-        return 'It\'s a tie!';
+        display.textContent = 'It\'s a tie!';
     }
     
     if (computerSelection == 'rock') {
         if (playerSelection == 'paper') {
             playerWins++;
-            return 'You win! Paper beats Rock';
+            display.textContent = 'You win! Paper beats Rock';
         }
         else {
             computerWins++;
-            return 'You lose! Rock beats Scissors';
+            display.textContent = 'You lose! Rock beats Scissors';
         }
     }
     else if (computerSelection == 'paper') {
         if (playerSelection == 'scissors') {
             playerWins++;
-            return 'You win! Scissors beats Paper';
+            display.textContent = 'You win! Scissors beats Paper';
         }
         else {
             computerWins++;
-            return 'You lose! Paper beats Rock';
+            display.textContent = 'You lose! Paper beats Rock';
         }
     }
     else {
         if (playerSelection == 'rock') {
             playerWins++;
-            return 'You win! Rock beats Scissors';
+            display.textContent = 'You win! Rock beats Scissors';
         }
         else {
             computerWins++;
-            return 'You lose! Scissors beats Paper';
+            display.textContent = 'You lose! Scissors beats Paper';
         }
     }
+    scoreDisplay.textContent = `Player: ${playerWins} Computer: ${computerWins}`;
+    checkIfGameWon();
 }
 
 //simulate best of 5 match
 function playGame() {
     display.textContent = 'OK...\nLet\'s Play...First to 5 wins';
-      
-    while (computerWins < 5 && playerWins < 5) {
-        display.textContent = 'Make your choice...';
-        let computerSelection = getComputerChoice();
-        let playerSelection;
-        while (playerSelection == undefined) {
-            playerSelection = getPlayerChoice();
-        }
-        let result = playRound(computerSelection, playerSelection);
-        display.textContent = result;
-        playerSelection = undefined;
-    }
+    playerWins = 0;
+    computerWins = 0;
+    scoreDisplay.textContent = `Player: ${playerWins} Computer: ${computerWins}`;
+}
 
+function checkIfGameWon() {
     if (computerWins == 5) {
         display.textContent = 'Computer Wins!';
     }
-    else if (playerSelection == 5){
+    else if (playerWins == 5){
         display.textContent = 'You win!';
     }
-    console.log('playgame ended');
 }
-
-

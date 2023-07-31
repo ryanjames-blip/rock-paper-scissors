@@ -48,7 +48,11 @@ button {
     padding: 12px 0;
     text-align: center;
 }
-
+.score-display {
+    text-align: center;
+    padding: 12px;
+    margin-bottom: 12px;
+}
 #play-button {
     color: black;
     font-size: 16px;
@@ -59,6 +63,7 @@ button {
 #footer {
     display: flex;
     margin-top: auto;
+    padding: 12px;
     justify-self: flex-end;
     align-self: center;
     font-size: small;
